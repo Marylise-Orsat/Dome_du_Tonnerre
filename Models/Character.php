@@ -23,7 +23,8 @@ class Character {
     public $name;
 
 
-    public function __construct($role) {
+    public function __construct($name, $role) {
+        $this->name = $name;
         $this->generateValues();
         $this->health = 1000;
         $this->role = $role;
@@ -41,7 +42,7 @@ class Character {
         $ok = false;
             
         do {
-            //on donne a force un nombre aléatoire entre 0 et 50
+            //on donne un nombre aléatoire entre 0 et 50
             $this->force = rand(0, 50);
             $this->agility = rand(0, 50);
             $this->endurance = rand(0, 50);
@@ -55,6 +56,12 @@ class Character {
     }
 
 
+    public function attack($cible) {
+        echo $this->name . " attaque " . $cible->name . "\n il lui inflige ";
+        $degats = $this->force * 10 - $cible->endurance;
+        $cible->health -= $degats;
+        echo $degats . " points de dégats \n" . "il reste à " . $cible->name . " " . $cible->health . " PV \n";
+    }
 
 
 }

@@ -10,10 +10,10 @@ include_once('Character.php');
 
 class Elf extends Character {
 
-    public function __construct($role) {
+    public function __construct($name, $role) {
 
         // appel au constructor parent pour exécuter le code du constructeur de Character
-        parent::__construct($role);
+        parent::__construct($name, $role);
 
         $this->health = intval($this->health * 1.5);
         $this->force = intval($this->force * 0.95);
