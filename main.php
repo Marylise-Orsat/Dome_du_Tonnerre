@@ -37,14 +37,50 @@ var_dump($domDuTonnerre);
 //echo "PV : " . $marylise->health . "\n";
 
 
+/**
+ * EXO 1 : les combattants tapent à tour de role jusqu'à ce qu'un meurt -:
+ */
 // Boucle : attaque l'un après l'autre l'adversaire
+// while(true) {
+//     $att = false;
+
+//     $domDuTonnerre[$att]->attack($domDuTonnerre[!$att]);
+//     if($domDuTonnerre[!$att]->health <= 0) break;
+//     $domDuTonnerre[!$att]->attack($domDuTonnerre[$att]);
+//     if($domDuTonnerre[$att]->health <= 0) break;
+
+//     $att = !$att;
+// }
+
+// Fonction qui attaque de façon aléatoire
+$continue = false;
+// on initialise un attaquant à la valeur 0
+$attaquant = 0;
+// on initialise un défenseur
+$defenseur = 1;
+
 while(true) {
-    $att = false;
+    // Phase d'attaque
+    $domDuTonnerre[$attaquant]->attack($domDuTonnerre[$defenseur]);
+    // on vérifie si le coup à été fatal pour le défenseur et les PV sont inférieurs à 0
+    if($domDuTonnerre[$defenseur]->health <= 0) break;
 
-    $domDuTonnerre[$att]->attack($domDuTonnerre[!$att]);
-    if($domDuTonnerre[!$att]->health <= 0) break;
-    $domDuTonnerre[!$att]]->attack($domDuTonnerre[$att]);
-    if($domDuTonnerre[$att]->health <= 0) break;
-
-    $att = !$att;
+    // on chnage la position
+    if($attaquant == 0 && $defenseur == 1) {
+        $attaquant = 1;
+        $defenseur = 0;
+    } else {
+        $attaquant = 0;
+        $defenseur = 1;
+    }
+    // on laisse un peu de temps entre les deux attaques
+    sleep(1.5);
 }
+
+$winner = null;
+foreach($domDuTonnerre as $character) {
+    if($character->health > 0) $winner = $character;
+}
+
+// On affiche le vainqueur
+echo "\n Fin du jeu \n" . $winner->name . " gagne ! \n";
