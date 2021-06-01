@@ -60,19 +60,14 @@ $attaquant = 0;
 $defenseur = 1;
 
 while(true) {
+    $attaquant = rand(0, count($domDuTonnerre)-1);
+    $defenseur = rand(0, count($domDuTonnerre)-1);
+
     // Phase d'attaque
     $domDuTonnerre[$attaquant]->attack($domDuTonnerre[$defenseur]);
     // on vérifie si le coup à été fatal pour le défenseur et les PV sont inférieurs à 0
     if($domDuTonnerre[$defenseur]->health <= 0) break;
 
-    // on chnage la position
-    if($attaquant == 0 && $defenseur == 1) {
-        $attaquant = 1;
-        $defenseur = 0;
-    } else {
-        $attaquant = 0;
-        $defenseur = 1;
-    }
     // on laisse un peu de temps entre les deux attaques
     sleep(1.5);
 }
