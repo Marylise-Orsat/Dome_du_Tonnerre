@@ -8,6 +8,13 @@ foreach($folder as $file) {
     if(is_file($path)) include_once($path);
 }
 
+$folder = scandir("./Core");
+
+foreach($folder as $file) {
+    $path = './Core/' . $file;
+    if(is_file($path)) include_once($path);
+}
+
 /**
  * Le dome du tonnerre v1 :
  * 
@@ -35,6 +42,14 @@ $domDuTonnerre = array (
 
 var_dump($domDuTonnerre);
 //echo "PV : " . $marylise->health . "\n";
+
+
+function attack($cible) {
+    //echo $this->name . " attaque " . $cible->name . "\n il lui inflige ";
+    $degats = $this->force * 10 - $cible->endurance;
+    $cible->health -= $degats;
+    //echo $degats . " points de dégats \n" . "il reste à " . $cible->name . " " . $cible->health . " PV \n";
+}
 
 
 /**
@@ -79,3 +94,28 @@ foreach($domDuTonnerre as $character) {
 
 // On affiche le vainqueur
 echo "\n Fin du jeu \n" . $winner->name . " gagne ! \n";
+
+
+
+
+
+/**
+ * Le dome du tonnerre 2 :
+ * 
+ * Plusieurs HOMMES rentrent et un HOMME sort
+ * 
+ * Dans le dossier CORE nous allons implémenter une classe DomeDuTonnerre qui aura les méthodes suivants :
+ *  - Ajouter un combattant
+ *  - Lancer le combat // mécanique interne
+ *  - Nettoyer l'arène des cadavres // mécanique interne
+ *  - Indiquer le vainqueur // mécanique interne
+ *  - Décrire l'action en cours
+ */
+
+$DDT = new DomeDuTonnerre();
+$DDT->addFighter(
+    new Elf("Elf2", new Warrior())//,
+    //new Orc("Orc2", new Warrior())
+);
+$DDT->fight();
+var_dump($DDT);
