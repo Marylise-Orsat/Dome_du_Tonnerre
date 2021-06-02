@@ -54,6 +54,17 @@ class Character {
         } while($ok);
         
     }
+
+    // La méthode effectue l'action et produit le résultat (renvoyer le nombre de dégats)
+    function attack($cible) {
+        //echo $this->name . " attaque " . $cible->name . "\n il lui inflige ";
+        $degats = $this->force * 10 - $cible->endurance;
+        //l'attaque ne gère pas la perte de dégats
+        $cible->health -= $degats;
+        //echo $degats . " points de dégats \n" . "il reste à " . $cible->name . " " . $cible->health . " PV \n";
+        return $degats;
+    }
+
 }
 
 

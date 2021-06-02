@@ -44,14 +44,6 @@ var_dump($domDuTonnerre);
 //echo "PV : " . $marylise->health . "\n";
 
 
-function attack($cible) {
-    //echo $this->name . " attaque " . $cible->name . "\n il lui inflige ";
-    $degats = $this->force * 10 - $cible->endurance;
-    $cible->health -= $degats;
-    //echo $degats . " points de dégats \n" . "il reste à " . $cible->name . " " . $cible->health . " PV \n";
-}
-
-
 /**
  * EXO 1 : les combattants tapent à tour de role jusqu'à ce qu'un meurt -:
  */
@@ -117,5 +109,5 @@ $DDT->addFighter(
     new Elf("Elf2", new Warrior())//,
     //new Orc("Orc2", new Warrior())
 );
-$DDT->fight();
+$DDT->startFight();
 var_dump($DDT);
