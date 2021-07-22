@@ -1,0 +1,11 @@
+Le dome du tonnerre : il fait quoi ?
+
+C'est une arène et on y fait rentrer des combattants.
+
+Les combattants sont créés à l'extérieur et sont insérés dans le dome (pour combattre).
+
+Les combattants sont ajoutés à la liste des combattants dans le dome.
+
+La liste des combattants est une propriété de la classe du dome.
+
+L'ajout d'un combattant dans le dome passe par une méthode.
